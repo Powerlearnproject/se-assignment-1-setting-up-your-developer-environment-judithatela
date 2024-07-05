@@ -1,0 +1,140 @@
+Document: Setting Up Development Environment on macOS
+1. Install Homebrew
+Homebrew is a package manager for macOS which simplifies the installation of software.
+
+Steps:
+1.Open Terminal.
+2.Install Homebrew with the following command:
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+3. Follow the on-screen instructions to complete the installation.
+4. Verify the installation by running:
+brew --version
+
+2. Install Visual Studio Code (VS Code)
+VS Code is a popular code editor developed by Microsoft.
+
+Steps:
+In Terminal, use Homebrew to install VS Code:
+brew install --cask visual-studio-code
+
+Open VS Code from the Applications folder or by typing code in Terminal.
+3. Set Up GitHub Account
+GitHub is a platform for version control and collaboration.
+
+Steps:
+Go to GitHub and sign up for an account if you don't have one.
+Verify your email address.
+4. Configure Git
+Git is a version control system.
+
+Steps:
+Install Git using Homebrew:
+brew install git
+Configure your Git username and email:
+git config --global user.name "JUDITH ATELA"
+git config --global user.email "judithatela@gmail.com"
+Verify the configuration:
+git config --list
+
+Generate SSH Key for GitHub
+SSH keys allow you to establish a secure connection between your computer and GitHub.
+
+Steps:
+Generate an SSH key:
+ssh-keygen -t ed25519 -C "judithatela@gmail.com"
+Start the SSH agent:
+eval "$(ssh-agent -s)"
+Add your SSH key to the ssh-agent:
+ssh-add -K ~/.ssh/id_ed25519
+Copy the SSH key to your clipboard:
+pbcopy < ~/.ssh/id_ed25519.pub
+Add the SSH key to your GitHub account:
+Go to GitHub SSH settings.
+Click "New SSH key", give it a title, and paste your key.
+6. Install Node.js and npm
+Node.js is a JavaScript runtime, and npm is a package manager for JavaScript.
+
+Steps:
+Install Node.js and npm using Homebrew:
+brew install node
+Verify the installation:
+node --version
+npm --version
+
+ Initialize a Sample Project
+Create a sample project and initialize it with Git.
+
+Steps:
+Create a new directory for your project:
+mkdir sample-project
+cd sample-project
+
+Initialize a new Git repository:
+git init
+Create a .gitignore file:
+touch .gitignore
+echo "node_modules/" >> .gitignore
+Create a sample README.md file:
+touch README.md
+echo "# Sample Project" >> README.md
+
+Create a Repository on GitHub
+Create a new repository on GitHub to host your sample project.
+
+Steps:
+Go to GitHub and create a new repository.
+Follow the on-screen instructions to create a new repository.
+9. Push Local Repository to GitHub
+Push your local repository to GitHub.
+
+Steps:
+Add the remote repository:
+git remote add origin git@github.com:yourusername/sample-project.git
+Push your changes:
+git add .
+git commit -m "Initial commit"
+git push -u origin master
+
+Customizing VS Code
+Customize VS Code with extensions and settings.
+
+Steps:
+Open VS Code.
+Go to the Extensions view by clicking the Extensions icon in the Activity Bar on the side of the window.
+Install recommended extensions, such as:
+GitLens
+Prettier - Code formatter
+ESLint
+Configure settings by going to Code > Preferences > Settings and adjusting settings as needed.
+11. Troubleshooting
+Common issues and solutions encountered during the setup.
+
+Issues:
+Permission Denied (Public Key) Error:
+
+Ensure your SSH key is correctly added to your GitHub account.
+Restart the SSH agent and add the key again.
+Verify that the correct SSH key is used by running:
+ssh -T git@github.com
+Command Not Found Errors:
+
+Ensure that the installation directories are added to your PATH. You can add them by editing the ~/.zshrc or ~/.bash_profile file:
+export PATH="/usr/local/bin:$PATH"
+
+ Reflection on Challenges
+Reflecting on the challenges faced during the setup and strategies employed to overcome them.
+
+Challenges:
+SSH Key Management:
+
+Generating and managing SSH keys can be complex. Using GitHub's guides and following step-by-step instructions helps mitigate confusion.
+Environment Configuration:
+
+Setting up environment variables and paths correctly is crucial. Using resources like Stack Overflow and official documentation aids in troubleshooting.
+Software Versions:
+
+Conflicting software versions can cause issues. Regularly updating Homebrew and installed packages ensures compatibility and smooth operation.
+GitHub Repository
+You can find the sample project repository with the necessary configuration files at GitHub Repository Link.
+
+By following these steps, you should have a fully functional development environment set up on your macOS machine. If you encounter any issues, refer to the troubleshooting section or seek help from online communities and documentation.
